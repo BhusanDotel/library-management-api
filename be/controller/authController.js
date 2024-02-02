@@ -3,9 +3,14 @@ require("dotenv").config();
 const secretKey = process.env.SECRET_KEY;
 
 const Login = async (req, res) => {
-  const expirationTime = Math.floor(Date.now() / 1000) + 60;
+  //expiration after 1 minute
+  // const expirationTime = Math.floor(Date.now() / 1000) + 60;
+
   //expiration after 5 minutes
   // const expirationTime = Math.floor(Date.now() / 1000) + 5 * 60;
+
+  //expiration after 1 day
+  const expirationTime = Math.floor(Date.now() / 1000) + 24 * 60 * 60;
 
   const playLoad = {
     // id: user._id,
