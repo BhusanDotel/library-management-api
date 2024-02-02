@@ -2,9 +2,24 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const secretKey = process.env.SECRET_KEY;
 
-//        headers: {
-//          authToken: actualtoken,
-//        },
+const Login = async (req, res) => {
+  const expirationTime = Math.floor(Date.now() / 1000) + 60;
+  //expiration after 5 minutes
+  // const expirationTime = Math.floor(Date.now() / 1000) + 5 * 60;
+
+  const playLoad = {
+    // id: user._id,
+    // fullName: user.fullName,
+    // email: user.email,
+    exp: expirationTime,
+  };
+  const token = jwt.sign(playLoad, secretKey);
+  return res.json({ authToken: token });
+};
+
+// headers: {
+//  authToken: actualtoken,
+// },
 
 const authenticateToken = (req, res, next) => {
   if (req.headers) {
