@@ -47,5 +47,6 @@ const authenticateToken = (req, res, next) => {
 };
 
 module.exports = {
+  Login,
   authenticateToken,
 };
